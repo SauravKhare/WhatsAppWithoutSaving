@@ -9,17 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@100;400;500;700&display=swap" rel="stylesheet">
     <title>WhatsApp Any Number!</title>
   </head>
-  <body>
-    <section class="grid place-items-center place-content-center content-center h-screen">
-        <h1 class="text-5xl font-bold">WhatsApp<br />Without<br />Saving</h1>
-      <div class="">
-        <select class="border rounded-md border-slate-300 py-2 px-5 text-slate-500" name="ccodes" id="ccodes">
+  <body class="">
+    <section class="container grid min-h-screen place-content-center">
+        <h1 class="text-5xl font-bold mb-6"><span class="text-green-600">WhatsApp</span> Without Saving</h1>
+        <select class="border rounded-md border-slate-200 py-2 px-5 text-slate-400 mb-5 shadow-lg" name="ccodes" id="ccodes">
           <option value="+91" selected>India</option>
         </select>
-        <input class="border rounded-md border-slate-300 py-2 px-5 text-slate-500" type="text" id="number" placeholder="Number">
-        <a class="border rounded-md w-full bg-green-700 text-white py-2 px-5 hover:bg-green-500 duration-150 cursor-pointer border-green-700" id="walinkbutton">Open in WhatsApp</a>
-
-      </div>
+        <input class="border rounded-md border-slate-200 py-2 px-5 text-slate-400 mb-5 shadow-lg" type="text" id="number" placeholder="Number">
+        <a class="border rounded-md w-full bg-green-600 text-white py-2 px-5 hover:bg-green-500 duration-150 cursor-pointer border-green-700 text-center shadow-lg" id="walinkbutton">Open in WhatsApp</a>
     </section>
     <script type="module" src="src/main.js"></script>
   </body>
