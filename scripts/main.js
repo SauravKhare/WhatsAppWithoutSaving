@@ -7,7 +7,7 @@ let ccCode = ccSelect.value;
 let number;
 
 const fetchCCodes = async () => {
-    const req =  await fetch('src/CountryCodes.json');
+    const req =  await fetch('/CountryCodes.json');
     const res = await req.json()
     countryCodes = res;
     countryCodes.map((cc, i) => {
@@ -20,7 +20,6 @@ const fetchCCodes = async () => {
 
 const waLinkMaker = () => {
     number = numberInput.value;
-    console.log(number)
     let link = `https://api.whatsapp.com/send?phone=${ccCode}${number}`;
     button.href = link;
 }
