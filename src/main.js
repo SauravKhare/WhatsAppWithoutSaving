@@ -1,55 +1,36 @@
-const numberInput = document.querySelector("#nowanumber");
-const waLink = document.querySelector("#walink");
-const getWALinkButton = document.querySelector("#walinkbutton");
-const countrySelector = document.querySelector("#ccodes");
+const numberInput = document.querySelector("#number")
+const ccSelect = document.querySelector("#ccodes")
+const button = document.querySelector("#walinkbutton")
 
-
-
-
-let nonWANumber = '';
-let countryCode = countrySelector.value.replace("+","");
-let defaultCC = countrySelector.value;
-let CC = [];
-console.log(typeof nonWANumber)
-console.log(countryCode)
+let countryCodes;
+let ccCode = ccSelect.value;
+let number;
 
 const fetchCCodes = async () => {
-    const res =  await fetch('src/cc.json');
-    const data = await res.json()
-    CC = data;
-    console.log(CC);
-    CC.map((cc, i) => {
+    const req =  await fetch('src/CountryCodes.json');
+    const res = await req.json()
+    countryCodes = res;
+    countryCodes.map((cc, i) => {
         let opt = document.createElement("option");
         opt.text = cc.name;
         opt.value = cc.dial_code;
-        countrySelector.add(opt);
+        ccSelect.add(opt);
     });
 }
 
-
-const createWANumber = () => {
-    console.log(nonWANumber);
-    console.log(`This is a WA Link: https://api.whatsapp.com/send?phone=${countryCode}${nonWANumber}`);
-    let link = `https://api.whatsapp.com/send?phone=${countryCode}${nonWANumber}`;
-    waLink.classList.remove("hide");
-    waLink.href = link;
-    waLink.textContent = `Message ${nonWANumber}`;
-    // window.location = link;
+const waLinkMaker = () => {
+    number = numberInput.value;
+    console.log(number)
+    let link = `https://api.whatsapp.com/send?phone=${ccCode}${number}`;
+    button.href = link;
 }
 
-numberInput.addEventListener('input', (event) => {
-    nonWANumber = event.target.value;
-    console.log(nonWANumber)
-    // nonWANumber.length === 10 ? getWALinkButton.disabled = false : null;
-});
-
-getWALinkButton.addEventListener('click', createWANumber);
-countrySelector.addEventListener('change', (event) => {
+ccSelect.addEventListener('change', (event) => {
     let ccTemp = event.target.value;
     let ccTest = ccTemp.replace("+","");
-    console.log(ccTemp)
-    console.log(ccTest)
-    countryCode = ccTest;
+    ccCode = ccTest;
 });
 
 fetchCCodes();
+
+numberInput.addEventListener("keyup", waLinkMaker);
